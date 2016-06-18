@@ -4,9 +4,9 @@ library(shiny)
 shinyUI(pageWithSidebar(
   headerPanel("CHA2DS2-VASc"),
   sidebarPanel(
-    h3('Stroke Risk'),
+    h3('Stroke Risk Per Year'),
     p('The CHA2DS2-VASc score helps you to calculate the stroke risk in percent by clicking the options that apply for your patient.'),
-    p('For more information follow this link https://en.wikipedia.org/wiki/CHA2DS2%E2%80%93VASc_score'),
+    p('For more information follow this', tags$a(href="https://en.wikipedia.org/wiki/CHA2DS2-VASc_score", "link"), "."),
     textInput('age', 'Age of the person',50 ),
     radioButtons("sex", "Gender", c(
                   "Male" = "male",
@@ -22,10 +22,9 @@ shinyUI(pageWithSidebar(
   ), 
   mainPanel(
     h3('Stroke Risk'),
-    p('Age and gender'),
-    verbatimTextOutput("oid1"),
-    verbatimTextOutput("oid2"),
-    p('In combination with the medical condition the stroke risk per year is around :'),
+    p('Age : ', verbatimTextOutput("oid1")),
+    p('Gender : ', verbatimTextOutput("oid2")),
+    p('In combination with the medical conditions the stroke risk per year is around :'),
     verbatimTextOutput("oid3")
   
 )))
