@@ -9,7 +9,7 @@ shinyUI(pageWithSidebar(
        You need to input the the age and gender, as 
        well as the medical conditions, by checking the 
        boxes that apply. By clicking the button \'Calculate\' 
-      the stroke risk per year will be displayed at the appropriate box.'),
+      the stroke risk per year and the respective score will be displayed at their appropriate sections.'),
     p('For more information follow this', 
       tags$a(href="https://en.wikipedia.org/wiki/CHA2DS2-VASc_score", "link"), "."),
     p('The source code can be found at github following this ', 
@@ -26,8 +26,7 @@ shinyUI(pageWithSidebar(
                          "Vascular Disease" = "1")),
     p('For Vascular Disease: e.g. peripheral artery disease, myocardial infarction, aortic plaque'),
     actionButton("goButton", "Calculate"),
-    hr(),
-    h5('Documentation'),
+    h4('Documentation'),
     p('Each condition is worth 1 or 2 points. The range is 0 to 9 points and helps to determine the treatment plan. 
       For each additional point the risk rises. The CHA2DS2-VASc score is the successor
       of the CHADS score, which used less parameters.')
