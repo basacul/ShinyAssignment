@@ -4,9 +4,16 @@ library(shiny)
 shinyUI(pageWithSidebar(
   headerPanel("CHA2DS2-VASc"),
   sidebarPanel(
-    h3('Stroke Risk Per Year'),
-    p('The CHA2DS2-VASc score helps you to calculate the stroke risk in percent by clicking the options that apply for your patient.'),
-    p('For more information follow this', tags$a(href="https://en.wikipedia.org/wiki/CHA2DS2-VASc_score", "link"), "."),
+    h3('Instructions'),
+    p('The CHA2DS2-VASc score calculates the stroke risk per year for any person. 
+       You need to input the the age and gender, as 
+       well as the medical conditions, by checking the 
+       boxes that apply. By clicking the button \'Calculate\' 
+      the stroke risk per year will be displayed at the appropriate box.'),
+    p('For more information follow this', 
+      tags$a(href="https://en.wikipedia.org/wiki/CHA2DS2-VASc_score", "link"), "."),
+    p('The source code can be found at github following this ', 
+      tags$a(href="https://github.com/basacul/ShinyAssignment", "link"), "." ),
     textInput('age', 'Age of the person',50 ),
     radioButtons("sex", "Gender", c(
                   "Male" = "male",
@@ -18,13 +25,19 @@ shinyUI(pageWithSidebar(
                          "Prior Stroke or TIA or Thromboembolism" = "2",
                          "Vascular Disease" = "1")),
     p('For Vascular Disease: e.g. peripheral artery disease, myocardial infarction, aortic plaque'),
-    actionButton("goButton", "Calculate")
+    actionButton("goButton", "Calculate"),
+    hr(),
+    h5('Documentation'),
+    p('Each condition is worth 1 or 2 points. The range is 0 to 9 points and helps to determine the treatment plan. 
+      For each additional point the risk rises. The CHA2DS2-VASc score is the successor
+      of the CHADS score, which used less parameters.')
   ), 
   mainPanel(
-    h3('Stroke Risk'),
+    h3('Stroke Risk Per Year'),
     p('Age : ', verbatimTextOutput("oid1")),
     p('Gender : ', verbatimTextOutput("oid2")),
-    p('In combination with the medical conditions the stroke risk per year is around :'),
-    verbatimTextOutput("oid3")
-  
+    p('STROKE RISK PER YEAR (in combination with the medical conditions) :'),
+    verbatimTextOutput("oid3"),
+    p('SCORE :'),
+    verbatimTextOutput("oid4")
 )))
