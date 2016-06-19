@@ -35,8 +35,7 @@ shinyUI(pageWithSidebar(
     h3('Stroke Risk Per Year'),
     p('Age : ', verbatimTextOutput("oid1")),
     p('Gender : ', verbatimTextOutput("oid2")),
-    p('STROKE RISK PER YEAR (in combination with the medical conditions) :'),
+    p('Combined with the applied medical conditions :'),
     verbatimTextOutput("oid3"),
-    p('SCORE :'),
     verbatimTextOutput("oid4")
 )))

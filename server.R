@@ -23,11 +23,11 @@ shinyServer(
                v
              })
     df <- eventReactive(input$goButton,{
-              paste(risk[score()+1], "%")
+              paste("Stroke Risk Per Year : ",risk[score()+1], "%")
     })
     
     output$oid3 = renderText({df()})
-    output$oid4 = renderText({score()})
+    output$oid4 = renderText({paste("Score : ", score())})
   }
 )
 
